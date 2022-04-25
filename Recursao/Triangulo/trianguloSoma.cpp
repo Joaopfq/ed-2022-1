@@ -7,10 +7,14 @@ using namespace std;
 
 
 void show(vector<int> triangulo){
+    if((int)triangulo.size() == 0)
+        return;
+
+    cout << "[ ";
     for(int num : triangulo){
         cout << num << " ";
     }
-    cout << endl;
+    cout << "]" << endl;
 }
 
 vector<int> read(int size){
