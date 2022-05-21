@@ -6,26 +6,34 @@ using namespace std;
 
 int main(){
     ifstream input("input.txt");
+
+    vector<int> vet;
     int size;
     input >> size;
-    vector<int> vet;
 
     int rot;
     input >> rot;
-    
-    for(int i = 0; i < size; i++){
+
+    if(rot > size)
+        rot = rot % size;
+
+    for(int i = 0; i < size; i++) {
         int value; 
         input >> value;
         vet.push_back(value);
     }
-    // 3 2 1
-    // 3
 
-    for(int i = 0; i < rot; i++){
-        int aux = vet[size - 1];
+    vector<int> aux;
+
+    for(int i = size - 1; rot > 0; i--) {
+        aux.push_back(vet[i]);
         vet.pop_back();
-        vet.push_back(vet[0]);
-        vet[0] = aux; 
+        rot--;
+    }
+
+    for(int i = 0; i < (int)aux.size(); i++) {
+        auto it = vet.begin();
+        vet.insert(it, aux[i]);
     }
 
     cout << "[ ";
