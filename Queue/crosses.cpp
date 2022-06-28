@@ -8,27 +8,24 @@ int main(){
     ifstream input("input.txt");
     queue<char> teams({'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P'});
 
-    string who_win;
-
     while(teams.size() != 1){
-        //cout << teams.back() << endl;
+        
+        string who_win;
 
         who_win.push_back(teams.front());
         teams.pop();
         who_win.push_back(teams.front());
         teams.pop();
 
-        string goals;
-        input >> goals;
+        int team_one, team_two;
+        input >> team_one >> team_two;
 
-        if(goals[0] - '0' > goals[1] - '0'){
-            cout << goals[0] - '0' << endl;
+        if(team_one > team_two){
             teams.push(who_win[0]);
         }
         else{
             teams.push(who_win[1]);
         }
-        who_win.clear();
     }
     cout << teams.back() << endl;
 }
