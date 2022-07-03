@@ -4,11 +4,15 @@
 
 using namespace std;
 
-bool can_put(string& line, int index, int value, int prox){
-    for(int i = index + 1; i < index + 1 + prox; i++)
-        if(i < (int)line.size() && line[i] == value + '0')
-            return false;
 
+bool can_put(string& line, int index, int value, int prox){
+    vector<int> posicoes;
+    
+    for(int i = index + 1; i < index + 1 + prox; i++){
+        posicoes.push_back(i);
+        if(i < (int)line.size() && line[i] == value + '0')  
+            return false;
+    }
     for(int i = index - prox; i < index; i++)
         if(i >= 0 && line[i] == value + '0')
             return false;
@@ -44,7 +48,7 @@ int main(){
     ifstream input("input.txt");
     string line;
     int prox;
-    int lim = 1;
+    int lim = 4;
 
     input >> line >> prox;
 
